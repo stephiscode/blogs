@@ -27,6 +27,12 @@ const BlogForm: React.FC<BlogFormProps> = ({ existingBlog, onClose }) => {
   }, [existingBlog]);
 
   const handleSubmit = () => {
+
+      if (!title || !description || !image || !time) {
+  alert("All fields are required.");
+  return;
+}
+
     const blog: Blog = {
       id: existingBlog ? existingBlog.id : Date.now(),
       title,
@@ -42,6 +48,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ existingBlog, onClose }) => {
     }
 
     onClose();
+
   };
 
   return (

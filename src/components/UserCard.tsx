@@ -1,7 +1,14 @@
-import React from 'react'
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle } from 'react-icons/fa';
 
-function UserCard({index, person}: UserCardProps) {
+type UserCardProp = {
+  person: {
+    name: string;
+    following: boolean;
+  };
+};
+
+function UserCard({person}: UserCardProp) {
+ 
   return (
     <div className='flex items-center justify-between'>
         <section className="flex items-center">
@@ -9,9 +16,9 @@ function UserCard({index, person}: UserCardProps) {
             <span>{person.name}</span>
         </section>
 
-        <button className='bg-white text-black font-semi-bold p-2 mr-2 rounded-md'>{person.following ? "Following" : "Follow"}</button>
+        <button className='bg-white text-black font-semibold p-2 mr-2 rounded-md'>{person.following ? "Following" : "Follow"}</button>
     </div>
   )
 }
 
-export default UserCard
+export default UserCard;

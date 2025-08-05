@@ -1,5 +1,3 @@
-import React from 'react'
-
 const topics = [
   "Technology",
   "Design Thinking",
@@ -28,4 +26,4 @@ function TopicsList() {
   )
 }
 
-export default TopicsList
+export default TopicsList;

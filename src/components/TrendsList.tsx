@@ -1,5 +1,3 @@
-import React from 'react'
-
 const trends = [
   {
     title: "Be the Person You Are on Vacation",
@@ -39,4 +37,4 @@ function TrendsList() {
   )}
     
 
-export default TrendsList
+export default TrendsList;

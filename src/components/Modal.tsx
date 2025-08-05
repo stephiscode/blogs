@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Modal: React.FC<{children: React.ReactNode; onClose: () => void }> = ({
     children,
     onClose,
@@ -19,4 +17,4 @@ const Modal: React.FC<{children: React.ReactNode; onClose: () => void }> = ({
   )
 }
 
-export default Modal
+export default Modal;

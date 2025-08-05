@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Navigation from './components/Navigation'
 import PeopleToFollow from './components/PeopleToFollow'
 import TrendsList from './components/TrendsList'
@@ -13,15 +13,15 @@ import ArticleList from './components/ArticleList'
 function App() {
 
   const [isModalOpen, setModalOpen] = useState(false);
-  const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
+  const [editingBlog, setEditingBlog] = useState<Blog | undefined>(undefined);
 
   
   const openModalForNewBlog = () => {
-    setEditingBlog(null);
-    setModalOpen(true);
-  }
+  setEditingBlog(undefined); // instead of null
+  setModalOpen(true);
+};
 
-  const openModalForEdit = (blog) => {
+  const openModalForEdit = (blog: Blog) => {
     setEditingBlog(blog);
     setModalOpen(true);
   };
@@ -32,25 +32,24 @@ function App() {
     <BlogProvider>
       <Navigation />
 
-      <div className="flex justify-center">
-        <section className="mx-auto p-6">
-          <div>
-            <button
-            onClick={openModalForNewBlog}
-             className="ml-[7rem] bg-black flex justify-center items-center text-white px-4 py-2 rounded mb-4">
-              Add New Blog <IoMdAddCircle className='ml-[.5rem]' /> {' '}
-            </button>
-
-            <ArticleList onEdit={openModalForEdit} />
-
-            {isModalOpen && <Modal onClose={() => setModalOpen(false)}>
+      {isModalOpen && (
+        <Modal onClose={() => setModalOpen(false)}>
               <BlogForm 
               existingBlog={editingBlog}
               onClose={() => setModalOpen(false)} />
 
-              </Modal>} 
+              </Modal>
+            )} 
+            
+      <div className="flex justify-center">
+        <section className="mx-auto p-6">
+          <button
+            onClick={openModalForNewBlog}
+             className="ml-[7rem] bg-black flex justify-center items-center text-white px-4 py-2 rounded mb-4">
+              Add New Blog <IoMdAddCircle className='ml-[.5rem]' /> {' '}
+          </button>
 
-          </div>
+          <ArticleList onEdit={openModalForEdit} />
         </section>
 
         <div className="w-[30%]">

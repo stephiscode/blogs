@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaSearch, FaUserCircle } from 'react-icons/fa';
 
 function Navigation() {
